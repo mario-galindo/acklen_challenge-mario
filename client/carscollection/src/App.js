@@ -3,7 +3,10 @@ import "./App.css";
 import { signInAuthProvider } from "./AuthProvider";
 import { AzureAD, AuthenticationState } from "react-aad-msal";
 import GetAccessTokenButton from "./GetAccessTokenButton";
-import 'bootstrap/dist/css/bootstrap.min.css'
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import Header from './Components/Header'
 
 function App() {
   return (
@@ -13,10 +16,13 @@ function App() {
           case AuthenticationState.Authenticated:
             return (
               <div>
+                <Header name={accountInfo.account.name}></Header>
                 <p>
                   <h2>Welcome, {accountInfo.account.name}!</h2>
                 </p>
-                <button className="btn btn-primary" onClick={logout}>Logout</button>
+                <button className="btn btn-primary" onClick={logout}>
+                  Logout
+                </button>
                 <GetAccessTokenButton
                   provider={signInAuthProvider}
                 ></GetAccessTokenButton>
