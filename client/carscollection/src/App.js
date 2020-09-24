@@ -6,7 +6,7 @@ import GetAccessTokenButton from "./GetAccessTokenButton";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Header from './Components/Header'
+import Header from "./Components/Header";
 
 function App() {
   return (
@@ -17,9 +17,12 @@ function App() {
             return (
               <div>
                 <Header name={accountInfo.account.name}></Header>
-                <p>
-                  <h2>Welcome, {accountInfo.account.name}!</h2>
-                </p>
+                <div className="jumbotron jumbotron-fluid">
+                  <div className="container">
+                    <h1 className="display-4">Welcome Acklener</h1>
+                    <p class="lead">This is your list of classic cars.</p>
+                  </div>
+                </div>
                 <button className="btn btn-primary" onClick={logout}>
                   Logout
                 </button>
