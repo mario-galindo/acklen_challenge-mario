@@ -5,6 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import AzureAD from "react-aad-msal";
 import { signInAuthProvider} from "./AuthProvider";
+//import 'bootstrap/dist/css/boostrap.css'
 
 ReactDOM.render(
   <AzureAD provider={signInAuthProvider} forceLogin={true}>
