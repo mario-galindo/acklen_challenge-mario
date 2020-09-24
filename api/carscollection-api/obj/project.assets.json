@@ -6171,7 +6171,7 @@
       "Microsoft.AspNetCore.Authentication.AzureADB2C.UI >= 3.1.8",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 3.1.8",
       "Microsoft.Azure.DocumentDB.Core >= 2.11.6",
-      "Newtonsoft.Json >= *"
+      "Newtonsoft.Json >= 12.0.3"
     ]
   },
   "packageFolders": {
@@ -6223,7 +6223,7 @@
           },
           "Newtonsoft.Json": {
             "target": "Package",
-            "version": "[*, )"
+            "version": "[12.0.3, )"
           }
         },
         "imports": [
