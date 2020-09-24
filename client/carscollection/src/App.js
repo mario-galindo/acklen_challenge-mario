@@ -3,6 +3,7 @@ import "./App.css";
 import { signInAuthProvider } from "./AuthProvider";
 import { AzureAD, AuthenticationState } from "react-aad-msal";
 import GetAccessTokenButton from "./GetAccessTokenButton";
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   return (
@@ -13,9 +14,9 @@ function App() {
             return (
               <div>
                 <p>
-                  <span>Welcome, {accountInfo.account.name}!</span>
+                  <h2>Welcome, {accountInfo.account.name}!</h2>
                 </p>
-                <button onClick={logout}>Logout</button>
+                <button className="btn btn-primary" onClick={logout}>Logout</button>
                 <GetAccessTokenButton
                   provider={signInAuthProvider}
                 ></GetAccessTokenButton>
