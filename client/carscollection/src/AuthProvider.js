@@ -22,7 +22,7 @@ const signInConfig = {
 // Authentication Parameters
 const authenticationParameters = {
   scopes: [
-    "https://classicscarschallenge.onmicrosoft.com/515d9a26-cc2d-4bea-95a5-0b44c3953f3a/Api.Read",
+    "https://classicscarschallenge.onmicrosoft.com/515d9a26-cc2d-4bea-95a5-0b44c3953f3a/Api.Read"
   ],
 };
 // Options
