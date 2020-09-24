@@ -1,5 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { signInAuthProvider } from "../AuthProvider";
 
 function Navigation(props) {
   return (
@@ -21,7 +22,7 @@ function Navigation(props) {
         </div>
         <form className="form-inline">
           <text className="mr-sm-2">{props.name}</text>
-          <button className="btn btn-danger my-2 my-sm-0">Salir</button>
+          <button className="btn btn-danger my-2 my-sm-0" onClick={props.logout}>Salir</button>
         </form>
       </nav>
     </div>

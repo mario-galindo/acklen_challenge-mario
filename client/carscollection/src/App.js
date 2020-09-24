@@ -16,11 +16,11 @@ function App() {
           case AuthenticationState.Authenticated:
             return (
               <div>
-                <Header name={accountInfo.account.name}></Header>
+                <Header name={accountInfo.account.name} logout={logout}></Header>
                 <div className="jumbotron jumbotron-fluid">
                   <div className="container">
                     <h1 className="display-4">Welcome Acklener</h1>
-                    <p class="lead">This is your list of classic cars.</p>
+                    <p className="lead">This is your list of classic cars.</p>
                   </div>
                 </div>
                 <button className="btn btn-primary" onClick={logout}>
