@@ -8,6 +8,15 @@ export default function GetTokenButton({ provider }) {
     });
   };
 
+  const getIdToken = () => {
+    // You should should use getAccessToken() to fetch a fresh token before making API calls
+    
+      provider.getIdToken().then(token => {
+        console.log(token.idToken.rawIdToken);
+      });
+    
+  };
+
   return (
     <div style={{ margin: '40px 0' }}>
       <p>
@@ -16,6 +25,9 @@ export default function GetTokenButton({ provider }) {
       </p>
       <button onClick={getAuthToken} className="Button">
         Get Access Token
+      </button>
+      <button onClick={getIdToken} className="Button">
+        Get Id Token
       </button>
     </div>
   );
