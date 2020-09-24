@@ -38,6 +38,10 @@
           "dependencies": {
             "Microsoft.AspNetCore.Authentication.AzureADB2C.UI": {
               "target": "Package",
+              "version": "[3.1.8, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
               "version": "[*, )"
             }
           },
