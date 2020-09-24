@@ -46,6 +46,10 @@
             },
             "Microsoft.Azure.DocumentDB.Core": {
               "target": "Package",
+              "version": "[2.11.6, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
               "version": "[*, )"
             }
           },
