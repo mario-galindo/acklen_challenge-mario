@@ -4,7 +4,7 @@ import { UseAxiosGet } from "../Hooks/HttpRequests";
 import ListCard from '../Components/ListCard'
 
 function Home() {
-  const url = `https://secureapi-galindo.azurewebsites.net/Item`;
+  const url = `https://carscollectionchallenge.azurewebsites.net/Item`;
 
   let cars = UseAxiosGet(url);
   let content = null;
