@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/1496bedd-cb75-4e6d-991a-772252c16605/resourceGroups/appsvc_windows_centralus/providers/Microsoft.Web/sites/carscollectionchallenge",
+    "appService.deploySubpath": "api/carscollection-api/publish"
+}
