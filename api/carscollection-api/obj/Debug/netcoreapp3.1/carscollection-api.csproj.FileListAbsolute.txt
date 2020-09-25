@@ -35,3 +35,8 @@
 /Users/mariogalindo/Documents/Software/webapps/acklen_challenge-mario/api/carscollection-api/bin/Debug/netcoreapp3.1/runtimes/win7-x64/native/Microsoft.Azure.Documents.ServiceInterop.dll
 /Users/mariogalindo/Documents/Software/webapps/acklen_challenge-mario/api/carscollection-api/obj/Debug/netcoreapp3.1/carscollection-api.MvcApplicationPartsAssemblyInfo.cs
 /Users/mariogalindo/Documents/Software/webapps/acklen_challenge-mario/api/carscollection-api/obj/Debug/netcoreapp3.1/carscollection-api.csproj.CopyComplete
+/Users/mariogalindo/Documents/Software/webapps/acklen_challenge-mario/api/carscollection-api/bin/Debug/netcoreapp3.1/publish/web.config
+/Users/mariogalindo/Documents/Software/webapps/acklen_challenge-mario/api/carscollection-api/bin/Debug/netcoreapp3.1/publish/appsettings.Development.json
+/Users/mariogalindo/Documents/Software/webapps/acklen_challenge-mario/api/carscollection-api/bin/Debug/netcoreapp3.1/publish/appsettings.json
+/Users/mariogalindo/Documents/Software/webapps/acklen_challenge-mario/api/carscollection-api/bin/Debug/netcoreapp3.1/publish/carscollection-api.deps.json
+/Users/mariogalindo/Documents/Software/webapps/acklen_challenge-mario/api/carscollection-api/bin/Debug/netcoreapp3.1/publish/carscollection-api.runtimeconfig.json
