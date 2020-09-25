@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Car from "./Views/Car";
+import Home from './Views/Home'
 
 import Header from "./Components/Header";
 
@@ -25,25 +26,16 @@ function App() {
                   ></Header>
                   <div>
                     <Switch>
+                    <Route exact path="/">
+                        <Home></Home>
+                      </Route>
                       <Route path="/Car">
                         <Car></Car>
                       </Route>
                     </Switch>
                   </div>
                 </Router>
-                {/* <div className="jumbotron jumbotron-fluid">
-                  <div className="container">
-                    <h1 className="display-4">Welcome Acklener</h1>
-                    <p className="lead">This is your list of classic cars.</p>
-                  </div>
-                </div> */}
-
-                {/* <button className="btn btn-primary" onClick={logout}>
-                  Logout
-                </button>
-                <GetAccessTokenButton
-                  provider={signInAuthProvider}
-                ></GetAccessTokenButton> */}
+                
               </div>
             );
           case AuthenticationState.Unauthenticated:
