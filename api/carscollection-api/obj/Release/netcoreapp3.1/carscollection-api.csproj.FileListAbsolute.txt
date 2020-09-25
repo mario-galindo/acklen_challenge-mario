@@ -35,8 +35,3 @@
 /Users/mariogalindo/Documents/Software/webapps/acklen_challenge-mario/api/carscollection-api/obj/Release/netcoreapp3.1/carscollection-api.dll
 /Users/mariogalindo/Documents/Software/webapps/acklen_challenge-mario/api/carscollection-api/obj/Release/netcoreapp3.1/carscollection-api.pdb
 /Users/mariogalindo/Documents/Software/webapps/acklen_challenge-mario/api/carscollection-api/obj/Release/netcoreapp3.1/carscollection-api.genruntimeconfig.cache
-/Users/mariogalindo/Documents/Software/webapps/acklen_challenge-mario/api/carscollection-api/bin/Release/netcoreapp3.1/publish/web.config
-/Users/mariogalindo/Documents/Software/webapps/acklen_challenge-mario/api/carscollection-api/bin/Release/netcoreapp3.1/publish/appsettings.Development.json
-/Users/mariogalindo/Documents/Software/webapps/acklen_challenge-mario/api/carscollection-api/bin/Release/netcoreapp3.1/publish/appsettings.json
-/Users/mariogalindo/Documents/Software/webapps/acklen_challenge-mario/api/carscollection-api/bin/Release/netcoreapp3.1/publish/carscollection-api.deps.json
-/Users/mariogalindo/Documents/Software/webapps/acklen_challenge-mario/api/carscollection-api/bin/Release/netcoreapp3.1/publish/carscollection-api.runtimeconfig.json
