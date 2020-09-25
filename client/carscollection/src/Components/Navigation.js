@@ -7,13 +7,13 @@ function Navigation(props) {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand">
+        <strong className="navbar-brand">
           <Link to="/">Cars Collection Acklen</Link>
-        </a>
+        </strong>
 
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-            <a className="nav-item nav-link active" href="/#">
+            <a className="nav-item nav-link active">
               <Link to="Car">Create</Link>
             </a>
           </div>
