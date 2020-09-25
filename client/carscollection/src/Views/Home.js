@@ -6,7 +6,7 @@ function Home() {
 
   return (
     <div className="px-3">
-      <h5>Home</h5>
+      <h5>Your classis cars</h5>
     </div>
   );
 }

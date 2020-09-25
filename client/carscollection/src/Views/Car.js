@@ -3,7 +3,7 @@ import React from "react";
 function Car() {
   return (
     <div className="px-3">
-      <h5>CREATE A NEW CAR - 🚗</h5>
+      <h5>Create a new classic car - 🚗</h5>
 
       <form>
         <div className="form-group">
