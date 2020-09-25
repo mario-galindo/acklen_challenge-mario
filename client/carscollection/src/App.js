@@ -6,6 +6,8 @@ import GetAccessTokenButton from "./GetAccessTokenButton";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+import Car from "./Views/Car";
+
 import Header from "./Components/Header";
 
 function App() {
@@ -16,19 +18,32 @@ function App() {
           case AuthenticationState.Authenticated:
             return (
               <div>
-                <Header name={accountInfo.account.name} logout={logout}></Header>
-                <div className="jumbotron jumbotron-fluid">
+                <Router>
+                  <Header
+                    name={accountInfo.account.name}
+                    logout={logout}
+                  ></Header>
+                  <div>
+                    <Switch>
+                      <Route path="/Car">
+                        <Car></Car>
+                      </Route>
+                    </Switch>
+                  </div>
+                </Router>
+                {/* <div className="jumbotron jumbotron-fluid">
                   <div className="container">
                     <h1 className="display-4">Welcome Acklener</h1>
                     <p className="lead">This is your list of classic cars.</p>
                   </div>
-                </div>
-                <button className="btn btn-primary" onClick={logout}>
+                </div> */}
+
+                {/* <button className="btn btn-primary" onClick={logout}>
                   Logout
                 </button>
                 <GetAccessTokenButton
                   provider={signInAuthProvider}
-                ></GetAccessTokenButton>
+                ></GetAccessTokenButton> */}
               </div>
             );
           case AuthenticationState.Unauthenticated:
