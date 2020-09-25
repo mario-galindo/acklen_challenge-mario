@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { UseAxiosGet } from "../Hooks/HttpRequests";
+import ListCard from '../Components/ListCard'
 
 function Home() {
   const url = `https://secureapi-galindo.azurewebsites.net/Item`;
@@ -11,7 +12,7 @@ function Home() {
   if (cars.data) {
     content = cars.data.map((car, key) => (
       <div key={key}>
-        <h2>{car.name}</h2>
+        <ListCard name={car.name} year={car.description}></ListCard>
       </div>
     ));
   }
