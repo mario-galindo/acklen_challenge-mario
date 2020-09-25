@@ -37,6 +37,7 @@ namespace carscollection_api.Controllers
             await _documentClient.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(databaseId), new DocumentCollection { Id = collectionId });
         }
 
+        [Authorize]
         [HttpGet]
         public IQueryable<Item> Get()
         {
