@@ -8,6 +8,8 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
+    "bootstrap-icons": "^1.0.0",
+    "install": "^0.13.0",
     "msal": "^1.4.0",
     "react": "^16.13.1",
     "react-aad-msal": "^2.3.5",

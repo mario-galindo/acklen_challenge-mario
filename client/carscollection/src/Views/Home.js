@@ -5,7 +5,6 @@ import ListCard from "../Components/ListCard";
 function Home(props) {
   const url = `https://carscollectionchallenge.azurewebsites.net/Item`;
 
-
   let cars = UseAxiosGet(url);
   let content = null;
 
@@ -18,8 +17,49 @@ function Home(props) {
   }
 
   return (
-    <div className="px-3">
-      <h5>Your classis cars</h5>
+    <div className=" container px-3">
+      <div className="jumbotron" style={{ backgroundColor: "#806cef" }}>
+        <h3 className="display-4" style={{ color: "#fff" }}>
+          Classic Car Collection Tracker
+        </h3>
+        <p className="lead" style={{ color: "#fff" }}>
+          This tool is designed for all{" "}
+          <strong style={{ fontWeight: "bold" }}>ackleners</strong> for register
+          and share classic cars collections
+        </p>
+        <hr className="my-4" style={{ backgroundColor: "#fff" }} />
+        <p>
+          <h5>
+            <strong style={{ color: "#fff" }}>Summary Collection</strong>
+          </h5>
+          <div className="row align-item-center justify-content-center">
+            <div
+              className="card mt-3 mr-5"
+              style={{ width: "18em", height: "7em" }}
+            >
+              <div className="card-body">
+                <h5 className="card-title text-center">Total Cars</h5>
+
+                <p className="card-text text-center">
+                  <h1 style={{ color: "#806cef" }}>5</h1>
+                </p>
+              </div>
+            </div>
+            <div className="card mt-3" style={{ width: "18em", height: "7em" }}>
+              <div className="card-body">
+                <h5 className="card-title text-center">Total Brand</h5>
+
+                <p className="card-text text-center">
+                  <h1 style={{ color: "#806cef" }}>3</h1>
+                </p>
+              </div>
+            </div>
+          </div>
+        </p>
+      </div>
+      <h5 style={{ color: "#806cef" }}>
+        <strong>Yours friends classis cars</strong>
+      </h5>
       {content}
     </div>
   );
