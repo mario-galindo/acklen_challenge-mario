@@ -8,16 +8,14 @@ import Car from "./Views/Car";
 import Home from "./Views/Home";
 
 //Components
-import Header from "./Components/Header";
+import Navigation from "./Components/Navigation";
 
 function App() {
   return (
     <div>
       <Router>
-        <Header></Header>
-        <div>
-          
-        </div>
+        <Navigation />
+        <div></div>
       </Router>
     </div>
   );
