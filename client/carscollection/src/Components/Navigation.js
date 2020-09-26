@@ -1,6 +1,5 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { signInAuthProvider } from "../AuthProvider";
 import { Link } from "react-router-dom";
 
 function Navigation() {
@@ -13,7 +12,7 @@ function Navigation() {
 
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-            <a className="nav-item nav-link active">
+            <a className="nav-item nav-link active" href="/#">
               <Link to="Car">Create</Link>
             </a>
           </div>

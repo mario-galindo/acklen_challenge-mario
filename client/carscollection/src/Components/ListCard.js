@@ -8,7 +8,7 @@ function ListCard(props) {
         <p className="card-text">
           {props.year}.
         </p>
-        <a href="#" className="btn btn-success">
+        <a href="/#" className="btn btn-success">
           See
         </a>
       </div>
