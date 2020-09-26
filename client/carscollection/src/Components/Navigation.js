@@ -18,7 +18,7 @@ function Navigation() {
           </div>
         </div>
         <form className="form-inline">
-          <text className="mr-sm-2">User Name</text>
+          <strong className="mr-sm-2">User Name</strong>
           <button className="btn btn-danger my-2 my-sm-0">Salir</button>
         </form>
       </nav>
