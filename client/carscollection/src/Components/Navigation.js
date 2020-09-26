@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { signInAuthProvider } from "../AuthProvider";
 import { Link } from "react-router-dom";
 
-function Navigation(props) {
+function Navigation() {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -19,13 +19,8 @@ function Navigation(props) {
           </div>
         </div>
         <form className="form-inline">
-          <text className="mr-sm-2">{props.name}</text>
-          <button
-            className="btn btn-danger my-2 my-sm-0"
-            onClick={props.logout}
-          >
-            Salir
-          </button>
+          <text className="mr-sm-2">User Name</text>
+          <button className="btn btn-danger my-2 my-sm-0">Salir</button>
         </form>
       </nav>
     </div>

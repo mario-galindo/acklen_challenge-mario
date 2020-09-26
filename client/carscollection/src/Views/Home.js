@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { UseAxiosGet } from "../Hooks/HttpRequests";
-import ListCard from '../Components/ListCard'
+import ListCard from "../Components/ListCard";
 
-function Home() {
+function Home(props) {
   const url = `https://carscollectionchallenge.azurewebsites.net/Item`;
+
 
   let cars = UseAxiosGet(url);
   let content = null;
