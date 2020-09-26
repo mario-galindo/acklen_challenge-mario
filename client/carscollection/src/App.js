@@ -16,14 +16,7 @@ function App() {
       <Router>
         <Header></Header>
         <div>
-          <Switch>
-            <Route exact path="/">
-              <Home></Home>
-            </Route>
-            <Route path="/Car">
-              <Car></Car>
-            </Route>
-          </Switch>
+          
         </div>
       </Router>
     </div>
