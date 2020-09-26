@@ -38,7 +38,7 @@ function Home(props) {
               style={{ width: "18em", height: "7em" }}
             >
               <div className="card-body">
-                <h5 className="card-title text-center">Total Cars</h5>
+                <h5 className="card-title text-center" style={{ color: "#806cef" }}>Total Cars</h5>
 
                 <p className="card-text text-center">
                   <h1 style={{ color: "#806cef" }}>5</h1>
@@ -47,7 +47,7 @@ function Home(props) {
             </div>
             <div className="card mt-3" style={{ width: "18em", height: "7em" }}>
               <div className="card-body">
-                <h5 className="card-title text-center">Total Brand</h5>
+                <h5 style={{ color: "#806cef" }} className="card-title text-center">Total Brand</h5>
 
                 <p className="card-text text-center">
                   <h1 style={{ color: "#806cef" }}>3</h1>
