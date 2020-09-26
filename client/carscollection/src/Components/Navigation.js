@@ -55,7 +55,7 @@ function Navigation() {
         </div>
         <form className="form-inline">
           <strong style={{ color: "#806cef" }} className="mr-sm-2">
-            Sign In
+            Mario
           </strong>
           <button className="btn btn-outline-light">
             <svg
