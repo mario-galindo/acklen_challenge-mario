@@ -1,26 +1,27 @@
 import React from "react";
+import { useParams } from "react-router-dom";
+import { UseAxiosGet } from "../Hooks/HttpRequests";
 
 function Car() {
-  return (
-    <div className="px-3">
-      <h5>Create a new classic car</h5>
+  const { id } = useParams();
+  const url = `https://carscollectionchallenge.azurewebsites.net/Item/${id}`;
 
-      <form>
-        <div className="form-group">
-          <label for="InputCar">Brand</label>
-          <input type="text" className="form-control" id="InputCar" />
-        </div>
-        <div className="form-group">
-          <label for="InputYear">Year</label>
-          <input type="text" className="form-control" id="InputYear" />
-        </div>
+  let car = UseAxiosGet(url);
+  let content = null;
+  console.log(car);
 
-        <button type="submit" className="btn btn-primary">
-          Save
-        </button>
-      </form>
-    </div>
-  );
+  if (car.loading) {
+    content = <p>Loading!!</p>;
+  }
+
+  if (car.data) {
+    return (content = (
+      <div>
+        <h1>{car.data[0].name}</h1>
+      </div>
+    ));
+  }
+  return <div>{content}</div>;
 }
 
 export default Car;

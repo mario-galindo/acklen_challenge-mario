@@ -1,5 +1,7 @@
 import React from "react";
 import { UseAxiosGet } from "../Hooks/HttpRequests";
+import { Link } from "react-router-dom";
+
 
 function Home(props) {
   const url = `https://carscollectionchallenge.azurewebsites.net/Item`;
@@ -9,6 +11,7 @@ function Home(props) {
 
   if (cars.data) {
     content = cars.data.map((car, key) => (
+      <Link to={`/car/${car.id}`}>
       <div key={key}>
         <div className="card w-25 mt-3">
           <div className="card-body">
@@ -20,6 +23,7 @@ function Home(props) {
           </div>
         </div>
       </div>
+      </Link>
     ));
   }
 
