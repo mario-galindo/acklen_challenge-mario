@@ -39,27 +39,30 @@ namespace carscollection_api.Controllers
         [HttpGet]
         public IQueryable<Item> Get()
         {
-            return _documentClient.CreateDocumentQuery<Item>(UriFactory.CreateDocumentCollectionUri(databaseId, collectionId), new FeedOptions { MaxItemCount = 20 });
+            var oid = User.FindFirst("http://schemas.microsoft.com/identity/claims/objectidentifier").Value;
+            return _documentClient.CreateDocumentQuery<Item>(UriFactory.CreateDocumentCollectionUri(databaseId, collectionId), new FeedOptions { MaxItemCount = 20 })
+            .Where((i) => i.oid == oid);
         }
 
         [Authorize]
         [HttpGet("{id}")]
         public IQueryable<Item> Get(string id)
         {
+            //Get only some claims
+            //var user = HttpContext.User.Claims.First(c => c.Type == "emails");
+            //var usuario = user.Value;
 
-            var user = HttpContext.User.Claims.First(c => c.Type == "emails");
-            var u = User.FindFirst("http://schemas.microsoft.com/identity/claims/objectidentifier").Value;
-            var usuario = user.Value;
-            Console.WriteLine(usuario);
-            Console.WriteLine(u);
+            var oid = User.FindFirst("http://schemas.microsoft.com/identity/claims/objectidentifier").Value;
 
             return _documentClient.CreateDocumentQuery<Item>(UriFactory.CreateDocumentCollectionUri(databaseId, collectionId), new FeedOptions { MaxItemCount = 20 })
-            .Where((i) => i.Id == id);
+            .Where((i) => i.Id == id && i.oid == oid);
         }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Item item)
         {
+            var oid = User.FindFirst("http://schemas.microsoft.com/identity/claims/objectidentifier").Value;
+            item.oid = oid;
             var response = await _documentClient.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri(databaseId, collectionId), item);
             return Ok();
         }
