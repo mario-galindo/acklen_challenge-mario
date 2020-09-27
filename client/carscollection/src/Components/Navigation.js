@@ -8,6 +8,7 @@ import {
 
 function Navigation() {
   const [userName, SetUserName] = useState("");
+  const [IsAuthenticated, setIsAutheticated] = useState(false);
 
   const handleLogin = async () => {
     myMSALObj
@@ -24,6 +25,9 @@ function Navigation() {
   async function getToken() {
     let tokenResponse = await myMSALObj.acquireTokenSilent(request);
     console.log(tokenResponse.idToken.rawIdToken);
+    if (tokenResponse) {
+      setIsAutheticated(true);
+    }
   }
 
   const handleLogout = () => {
@@ -41,16 +45,15 @@ function Navigation() {
       <strong className="mr-3" style={{ color: "#FFFFFF" }}>
         {userName}
       </strong>
-      <button
-        id="signin"
-        className="btn btn-success mr-3"
-        onClick={handleLogin}
-      >
-        Sign In
-      </button>
-      <button className="btn btn-danger" onClick={handleLogout}>
-        Sign Out
-      </button>
+      {IsAuthenticated ? (
+        <button className="btn btn-danger" onClick={handleLogout}>
+          Sign Out
+        </button>
+      ) : (
+        <button className="btn btn-success mr-3" onClick={handleLogin}>
+          Sign In
+        </button>
+      )}
     </nav>
   );
 }
