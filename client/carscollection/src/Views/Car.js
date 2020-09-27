@@ -8,10 +8,11 @@ function Car() {
 
   let car = UseAxiosGet(url);
   let content = null;
-  console.log(car);
 
   if (car.loading) {
-    content = <p>Loading!!</p>;
+    content = <div className="spinner-grow" role="status">
+    <span className="sr-only">Loading...</span>
+  </div>
   }
 
   if (car.data) {

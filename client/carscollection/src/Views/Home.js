@@ -11,19 +11,21 @@ function Home(props) {
 
   if (cars.data) {
     content = cars.data.map((car, key) => (
-      <Link to={`/car/${car.id}`}>
+      
       <div key={key}>
         <div className="card w-25 mt-3">
           <div className="card-body">
             <h5 className="card-title">{car.name}</h5>
             <p className="card-text">{car.description}</p>
-            <a href="/#" className="btn btn-primary">
+            <Link to={`/car/${car.id}`}>
+            <label type="button" className="btn btn-primary">
               Ver
-            </a>
+            </label>
+            </Link>
           </div>
         </div>
       </div>
-      </Link>
+      
     ));
   }
 
