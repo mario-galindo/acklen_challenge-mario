@@ -3,21 +3,28 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {
   client as myMSALObj,
   request as loginRequest,
+  request,
 } from "../Auth/authProvider";
 
 function Navigation() {
   const [userName, SetUserName] = useState("");
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     myMSALObj
       .loginPopup(loginRequest)
       .then((response) => {
         SetUserName(myMSALObj.getAccount().name);
+        getToken();
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
+  async function getToken() {
+    let tokenResponse = await myMSALObj.acquireTokenSilent(request);
+    console.log(tokenResponse.idToken.rawIdToken);
+  }
 
   const handleLogout = () => {
     myMSALObj.logout();
