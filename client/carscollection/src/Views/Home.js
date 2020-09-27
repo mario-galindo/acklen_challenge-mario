@@ -14,8 +14,7 @@ import {
 } from "reactstrap";
 
 function Home(props) {
-  const urlGet = `https://carscollectionchallenge.azurewebsites.net/Item`;
-  const urlPost = `https://carscollectionchallenge.azurewebsites.net/Item`;
+  const url = `https://carscollectionchallenge.azurewebsites.net/Item`;
 
   const [showModal, setShowModal] = useState(false);
   const [car, setNewCar] = useState({ name: "", description: "" });
@@ -40,17 +39,31 @@ function Home(props) {
     };
 
     axios
-      .post(urlPost, car, config)
+      .post(url, car, config)
       .then((response) => {
         setShowModal(false);
-        listCar.data.push(car);
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  listCar = UseAxiosGet(urlGet);
+  const deleteCar = (carId) => {
+    const config = {
+      headers: { Authorization: `Bearer ${localStorage.getItem("idToken")}` },
+    };
+
+    var resourceToDelete = url + `/${carId}`;
+
+    axios
+      .delete(resourceToDelete, config)
+      .then((response) => {})
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  listCar = UseAxiosGet(url);
   console.log(listCar);
   let content = null;
 
@@ -86,7 +99,11 @@ function Home(props) {
                   <Button color="warning" style={{ marginRight: "5px" }}>
                     Edit
                   </Button>
-                  <Button color="danger" style={{ marginRight: "5px" }}>
+                  <Button
+                    color="danger"
+                    style={{ marginRight: "5px" }}
+                    onClick={() => deleteCar(elemento.id)}
+                  >
                     Delete
                   </Button>
                 </td>
