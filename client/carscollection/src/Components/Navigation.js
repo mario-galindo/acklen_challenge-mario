@@ -25,6 +25,7 @@ function Navigation() {
   async function getToken() {
     let tokenResponse = await myMSALObj.acquireTokenSilent(request);
     localStorage.setItem("idToken", tokenResponse.idToken.rawIdToken);
+    console.log(tokenResponse.idToken.rawIdToken)
   }
 
   const handleLogout = () => {
