@@ -9,11 +9,11 @@ export function UseAxiosGet(url) {
     error: false,
   });
 
-  const config = {
-    headers: { Authorization: `Bearer ${localStorage.getItem("idToken")}` },
-  };
-
   useEffect(() => {
+    const config = {
+      headers: { Authorization: `Bearer ${localStorage.getItem("idToken")}` },
+    };
+
     setRequest({
       loading: true,
       data: null,
