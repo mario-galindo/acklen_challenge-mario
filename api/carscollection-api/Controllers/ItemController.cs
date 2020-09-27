@@ -58,6 +58,7 @@ namespace carscollection_api.Controllers
             .Where((i) => i.Id == id && i.oid == oid);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Item item)
         {
