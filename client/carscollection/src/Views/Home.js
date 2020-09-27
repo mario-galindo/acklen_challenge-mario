@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { UseAxiosGet } from "../Hooks/HttpRequests";
 import { Link } from "react-router-dom";
 import {
@@ -14,6 +14,15 @@ import {
 
 function Home(props) {
   const url = `https://carscollectionchallenge.azurewebsites.net/Item`;
+  const [showModal,setShowModal] = useState(false);
+
+  const mostrarModalInsertar = () => {
+    setShowModal(true);
+  };
+
+  const cerrarModalInsertar = () => {
+    setShowModal(false);
+  };
 
   let cars = UseAxiosGet(url);
   let content = null;
@@ -22,7 +31,7 @@ function Home(props) {
     content = (
       <Container>
         <br />
-        <Button color="primary">Save new colleccion</Button>
+        <Button color="primary" onClick={mostrarModalInsertar}>Save new colleccion</Button>
         <br />
         <br />
 
@@ -62,6 +71,38 @@ function Home(props) {
 
   return (
     <div>
+      <Modal isOpen={showModal}>
+        <ModalHeader>
+          <div>
+            <h3>Save a car</h3>
+          </div>
+        </ModalHeader>
+
+        <ModalBody>
+          <FormGroup>
+            <label>Name:</label>
+            <input className="form-control" name="name" type="text" />
+          </FormGroup>
+
+          <FormGroup>
+            <label>Description:</label>
+            <input className="form-control" name="description" type="text" />
+          </FormGroup>
+        </ModalBody>
+
+        <ModalFooter>
+          <Button color="primary" onClick={() => this.insertar()}>
+            Insertar
+          </Button>
+          <Button
+            className="btn btn-danger"
+            onClick={cerrarModalInsertar}
+          >
+            Cancelar
+          </Button>
+        </ModalFooter>
+      </Modal>
+
       <h3>Yours Cars</h3>
       {content}
     </div>
