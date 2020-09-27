@@ -10,5 +10,7 @@ namespace carscollection_api.Models
         public string Name { get; set; }
         [Newtonsoft.Json.JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "oid")]
+        public string oid { get; set; }
     }
 }

@@ -6,6 +6,7 @@ using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
 using Microsoft.Extensions.Configuration;
 using carscollection_api.Models;
+using System;
 
 namespace carscollection_api.Controllers
 {
@@ -41,9 +42,17 @@ namespace carscollection_api.Controllers
             return _documentClient.CreateDocumentQuery<Item>(UriFactory.CreateDocumentCollectionUri(databaseId, collectionId), new FeedOptions { MaxItemCount = 20 });
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public IQueryable<Item> Get(string id)
         {
+
+            var user = HttpContext.User.Claims.First(c => c.Type == "emails");
+            var u = User.FindFirst("http://schemas.microsoft.com/identity/claims/objectidentifier").Value;
+            var usuario = user.Value;
+            Console.WriteLine(usuario);
+            Console.WriteLine(u);
+
             return _documentClient.CreateDocumentQuery<Item>(UriFactory.CreateDocumentCollectionUri(databaseId, collectionId), new FeedOptions { MaxItemCount = 20 })
             .Where((i) => i.Id == id);
         }
