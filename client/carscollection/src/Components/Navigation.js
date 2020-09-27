@@ -7,14 +7,14 @@ import {
 } from "../Auth/authProvider";
 
 function Navigation() {
-  const [userName, SetUserName] = useState("");
-  const [IsAuthenticated, setIsAutheticated] = useState(false);
+  const [isAuthenticated, setIdAuthenticated] = useState(false);
 
-  const handleLogin = async () => {
+  const handleLogin = () => {
     myMSALObj
       .loginPopup(loginRequest)
       .then((response) => {
-        SetUserName(myMSALObj.getAccount().name);
+        localStorage.setItem("userName", myMSALObj.getAccount().name);
+        setIdAuthenticated(true);
         getToken();
       })
       .catch((error) => {
@@ -24,14 +24,13 @@ function Navigation() {
 
   async function getToken() {
     let tokenResponse = await myMSALObj.acquireTokenSilent(request);
-    console.log(tokenResponse.idToken.rawIdToken);
-    if (tokenResponse) {
-      setIsAutheticated(true);
-    }
+    localStorage.setItem("idToken", tokenResponse.idToken.rawIdToken);
   }
 
   const handleLogout = () => {
     myMSALObj.logout();
+    localStorage.removeItem("userName");
+    localStorage.removeItem("idToken");
   };
 
   return (
@@ -43,16 +42,20 @@ function Navigation() {
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup"></div>
 
       <strong className="mr-3" style={{ color: "#FFFFFF" }}>
-        {userName}
+        {localStorage.getItem("userName")}
       </strong>
-      {IsAuthenticated ? (
-        <button className="btn btn-danger" onClick={handleLogout}>
+      {localStorage.getItem("idToken") !== null || isAuthenticated ? (
+        <label type="button" className="btn btn-danger" onClick={handleLogout}>
           Sign Out
-        </button>
+        </label>
       ) : (
-        <button className="btn btn-success mr-3" onClick={handleLogin}>
+        <label
+          type="button"
+          className="btn btn-success mr-3"
+          onClick={handleLogin}
+        >
           Sign In
-        </button>
+        </label>
       )}
     </nav>
   );
