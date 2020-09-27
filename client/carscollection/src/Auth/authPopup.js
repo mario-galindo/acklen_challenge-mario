@@ -19,3 +19,5 @@ export function signIn() {
 export function logout() {
   myMSALObj.logout();
 }
+
+

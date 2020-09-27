@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Link } from "react-router-dom";
+import {signIn} from '../Auth/authPopup'
 
 function Navigation() {
   return (
@@ -10,9 +10,10 @@ function Navigation() {
       </div>
 
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup"></div>
-      <form className="form-inline">
-        <button className="btn btn-secondary">Sign In</button>
-      </form>
+      
+        <button className="btn btn-success mr-3" onClick={signIn}>Sign In</button>
+        <button className="btn btn-danger">Sign Out</button>
+      
     </nav>
   );
 }
