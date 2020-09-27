@@ -1,6 +1,7 @@
-import React,{useState} from "react";
+import React, { useEffect, useState } from "react";
 import { UseAxiosGet } from "../Hooks/HttpRequests";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { Link, Redirect } from "react-router-dom";
 import {
   Table,
   Button,
@@ -13,25 +14,53 @@ import {
 } from "reactstrap";
 
 function Home(props) {
-  const url = `https://carscollectionchallenge.azurewebsites.net/Item`;
-  const [showModal,setShowModal] = useState(false);
+  const urlGet = `https://carscollectionchallenge.azurewebsites.net/Item`;
+  const urlPost = `https://carscollectionchallenge.azurewebsites.net/Item`;
 
-  const mostrarModalInsertar = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [car, setNewCar] = useState({ name: "", description: "" });
+  var listCar = [];
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setNewCar({ ...car, [name]: value });
+  };
+
+  const showModalSave = () => {
     setShowModal(true);
   };
 
-  const cerrarModalInsertar = () => {
+  const closeModalSave = () => {
     setShowModal(false);
   };
 
-  let cars = UseAxiosGet(url);
+  const saveNewCar = () => {
+    const config = {
+      headers: { Authorization: `Bearer ${localStorage.getItem("idToken")}` },
+    };
+
+    axios
+      .post(urlPost, car, config)
+      .then((response) => {
+        setShowModal(false);
+        listCar.data.push(car);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  listCar = UseAxiosGet(urlGet);
+  console.log(listCar);
   let content = null;
 
-  if (cars.data) {
+  if (listCar.data) {
     content = (
       <Container>
         <br />
-        <Button color="primary" onClick={mostrarModalInsertar}>Save new colleccion</Button>
+        <Button color="primary" onClick={showModalSave}>
+          Save new colleccion
+        </Button>
         <br />
         <br />
 
@@ -44,7 +73,7 @@ function Home(props) {
             </tr>
           </thead>
           <tbody>
-            {cars.data.map((elemento, key) => (
+            {listCar.data.map((elemento, key) => (
               <tr key={key}>
                 <td>{elemento.id}</td>
                 <td>{elemento.name}</td>
@@ -81,24 +110,33 @@ function Home(props) {
         <ModalBody>
           <FormGroup>
             <label>Name:</label>
-            <input className="form-control" name="name" type="text" />
+            <input
+              className="form-control"
+              value={car.name}
+              name="name"
+              type="text"
+              onChange={handleChange}
+            />
           </FormGroup>
 
           <FormGroup>
             <label>Description:</label>
-            <input className="form-control" name="description" type="text" />
+            <input
+              className="form-control"
+              value={car.description}
+              name="description"
+              type="text"
+              onChange={handleChange}
+            />
           </FormGroup>
         </ModalBody>
 
         <ModalFooter>
-          <Button color="primary" onClick={() => this.insertar()}>
-            Insertar
+          <Button color="primary" onClick={saveNewCar}>
+            Save
           </Button>
-          <Button
-            className="btn btn-danger"
-            onClick={cerrarModalInsertar}
-          >
-            Cancelar
+          <Button className="btn btn-danger" onClick={closeModalSave}>
+            Cancel
           </Button>
         </ModalFooter>
       </Modal>
