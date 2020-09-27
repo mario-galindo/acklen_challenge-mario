@@ -9,6 +9,10 @@ export function UseAxiosGet(url) {
     error: false,
   });
 
+  const config = {
+    headers: { Authorization: `Bearer ${localStorage.getItem("idToken")}` },
+  };
+
   useEffect(() => {
     setRequest({
       loading: true,
@@ -16,7 +20,7 @@ export function UseAxiosGet(url) {
       error: false,
     });
     axios
-      .get(url)
+      .get(url, config)
       .then((response) => {
         setRequest({
           loading: false,

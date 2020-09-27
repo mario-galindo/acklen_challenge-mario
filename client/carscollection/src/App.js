@@ -1,20 +1,29 @@
 import React from "react";
 import "./App.css";
-//import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 //Views
 // import Car from "./Views/Car";
-// import Home from "./Views/Home";
+import Home from "./Views/Home";
 
 //Components
 import Navigation from "./Components/Navigation";
 
 function App() {
+  
   return (
     <div>
-      <Navigation />
-      <div></div>
+      <Router>
+        <Navigation />
+        <div className="p-3">
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     </div>
   );
 }
