@@ -10,7 +10,15 @@ function Home(props) {
   if (cars.data) {
     content = cars.data.map((car, key) => (
       <div key={key}>
-        <h5>{car.name}</h5>
+        <div className="card w-25 mt-3">
+          <div className="card-body">
+            <h5 className="card-title">{car.name}</h5>
+            <p className="card-text">{car.description}</p>
+            <a href="/#" className="btn btn-primary">
+              Ver
+            </a>
+          </div>
+        </div>
       </div>
     ));
   }
