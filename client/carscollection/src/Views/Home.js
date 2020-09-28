@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Table, Button, Container } from "reactstrap";
-import ModalCreate from "../Components/Modal";
+import ModalCreate from "../Components/ModalCreate";
+import ModalUpdate from "../Components/ModalUpdate";
 
 function Home() {
   const url = `https://carscollectionchallenge.azurewebsites.net/Item`;
@@ -21,6 +22,7 @@ function Home() {
   };
 
   const closeModalSave = () => {
+    setNewCar({ name: "", description: "" });
     setShowModal(false);
   };
 
@@ -52,6 +54,11 @@ function Home() {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const updateCar = (car) => {
+    setNewCar(car);
+    showModalSave();
   };
 
   useEffect(() => {
@@ -95,7 +102,11 @@ function Home() {
                       View
                     </Button>
                   </Link>
-                  <Button color="warning" style={{ marginRight: "5px" }}>
+                  <Button
+                    color="warning"
+                    style={{ marginRight: "5px" }}
+                    onClick={() => updateCar(elemento)}
+                  >
                     Edit
                   </Button>
                   <Button
@@ -124,6 +135,14 @@ function Home() {
         carName={car.name}
         carDescription={car.description}
       ></ModalCreate>
+
+      <ModalUpdate
+        showModalUpdate={showModal}
+        closeModalUpdate={closeModalSave}
+        handleChange={handleChange}
+        carName={car.name}
+        carDescription={car.description}
+      ></ModalUpdate>
 
       <h3>Yours Cars</h3>
       {content}
