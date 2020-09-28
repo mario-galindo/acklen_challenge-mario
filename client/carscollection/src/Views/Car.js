@@ -19,6 +19,8 @@ function Car() {
     return (content = (
       <div>
         <h1>{car.data[0].name}</h1>
+        <br/>
+    <p>{car.data[0].description}</p>
       </div>
     ));
   }

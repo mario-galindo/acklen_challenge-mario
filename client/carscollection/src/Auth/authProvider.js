@@ -5,7 +5,7 @@ const config = {
     clientId: "387d3855-d43e-45f0-937f-b06a3e0d8ff2",
     authority:
       "https://classicscarschallenge.b2clogin.com/classicscarschallenge.onmicrosoft.com/B2C_1_carscollection_sign_in_up",
-    redirectUri: "https://secureapi-galindo.azurewebsites.net/",
+    redirectUri: "http://localhost:3000",
     validateAuthority: false,
   },
 };

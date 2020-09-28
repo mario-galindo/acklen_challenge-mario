@@ -41,6 +41,7 @@ function Home() {
       .post(url, car, config)
       .then((response) => {
         setShowModal(false);
+        setListCar((listCar) => [...listCar, car]);
       })
       .catch((error) => {
         console.log(error);
@@ -56,7 +57,9 @@ function Home() {
 
     axios
       .delete(resourceToDelete, config)
-      .then((response) => {})
+      .then((response) => {
+        setListCar((listCar) => listCar.filter((item) => item.id !== carId));
+      })
       .catch((error) => {
         console.log(error);
       });
@@ -94,13 +97,13 @@ function Home() {
     axios.get(urlRequest, config).then((response) => {
       setListCar(response.data);
     });
-  }, [listCar]);
+  }, []);
 
   let content = null;
 
   if (listCar) {
     content = (
-      <Container>
+      <Container className="text-center">
         <br />
         <Button color="primary" onClick={showModalSave}>
           Save new colleccion
@@ -109,18 +112,18 @@ function Home() {
         <br />
 
         <Table>
-          <thead>
+          <thead className="text-left">
             <tr>
-              <th>Id</th>
               <th>Name</th>
+              <th>Description</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {listCar.map((elemento, key) => (
-              <tr key={key}>
-                <td>{elemento.id}</td>
+              <tr className="text-left" key={key}>
                 <td>{elemento.name}</td>
+                <td>{elemento.description}</td>
                 <td>
                   <Link to={`/car/${elemento.id}`}>
                     <Button color="success" style={{ marginRight: "5px" }}>
