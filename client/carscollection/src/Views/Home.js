@@ -22,7 +22,6 @@ function Home() {
     setShowModal(true);
   };
 
-
   const closeModalSave = () => {
     setNewCar({ name: "", description: "" });
     setShowModal(false);
@@ -63,9 +62,27 @@ function Home() {
       });
   };
 
-  const updateCar = (car) => {
+  const getUpdateCar = (car) => {
     setNewCar(car);
-    setShowModalUpdate(true)
+    setShowModalUpdate(true);
+  };
+
+  const updateCar = () => {
+    const config = {
+      headers: { Authorization: `Bearer ${localStorage.getItem("idToken")}` },
+    };
+
+    var resourceToUpdate = url + `/${car.id}`;
+    console.log(resourceToUpdate);
+    axios
+      .put(resourceToUpdate, car, config)
+      .then((response) => {
+        setShowModalUpdate(false);
+      })
+
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   useEffect(() => {
@@ -112,7 +129,7 @@ function Home() {
                   <Button
                     color="warning"
                     style={{ marginRight: "5px" }}
-                    onClick={() => updateCar(elemento)}
+                    onClick={() => getUpdateCar(elemento)}
                   >
                     Edit
                   </Button>
@@ -149,6 +166,7 @@ function Home() {
         handleChange={handleChange}
         carName={car.name}
         carDescription={car.description}
+        updateCar={updateCar}
       ></ModalUpdate>
 
       <h3>Yours Cars</h3>
