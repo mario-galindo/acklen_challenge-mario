@@ -1,16 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import {
-  Table,
-  Button,
-  Container,
-  Modal,
-  ModalBody,
-  ModalHeader,
-  FormGroup,
-  ModalFooter,
-} from "reactstrap";
+import { Table, Button, Container } from "reactstrap";
+import ModalCreate from "../Components/Modal";
 
 function Home() {
   const url = `https://carscollectionchallenge.azurewebsites.net/Item`;
@@ -124,46 +116,14 @@ function Home() {
 
   return (
     <div>
-      <Modal isOpen={showModal}>
-        <ModalHeader>
-          <div>
-            <h3>Save a car</h3>
-          </div>
-        </ModalHeader>
-
-        <ModalBody>
-          <FormGroup>
-            <label>Name:</label>
-            <input
-              className="form-control"
-              value={car.name}
-              name="name"
-              type="text"
-              onChange={handleChange}
-            />
-          </FormGroup>
-
-          <FormGroup>
-            <label>Description:</label>
-            <input
-              className="form-control"
-              value={car.description}
-              name="description"
-              type="text"
-              onChange={handleChange}
-            />
-          </FormGroup>
-        </ModalBody>
-
-        <ModalFooter>
-          <Button color="primary" onClick={saveNewCar}>
-            Save
-          </Button>
-          <Button className="btn btn-danger" onClick={closeModalSave}>
-            Cancel
-          </Button>
-        </ModalFooter>
-      </Modal>
+      <ModalCreate
+        showModal={showModal}
+        handleChange={handleChange}
+        saveNewCar={saveNewCar}
+        closeModalSave={closeModalSave}
+        carName={car.name}
+        carDescription={car.description}
+      ></ModalCreate>
 
       <h3>Yours Cars</h3>
       {content}
