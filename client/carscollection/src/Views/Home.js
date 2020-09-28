@@ -173,7 +173,7 @@ function Home() {
         updateCar={updateCar}
       ></ModalUpdate>
 
-      <h3>Yours Cars</h3>
+     
       {content}
     </div>
   );
