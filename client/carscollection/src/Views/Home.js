@@ -20,7 +20,12 @@ function Home() {
   };
 
   const showModalSave = () => {
-    setShowModal(true);
+    if(localStorage.getItem("idToken") !== null){
+      setShowModal(true);
+    }else{
+      alert("Please Signin!")
+    }
+    
   };
 
   const closeModalSave = () => {
@@ -34,6 +39,7 @@ function Home() {
   };
 
   const saveNewCar = () => {
+    
     const config = {
       headers: { Authorization: `Bearer ${localStorage.getItem("idToken")}` },
     };
