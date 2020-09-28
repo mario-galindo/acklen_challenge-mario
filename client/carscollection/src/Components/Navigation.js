@@ -37,7 +37,7 @@ function Navigation() {
   return (
     <nav className="navbar navbar-expand-lg bg-primary">
       <div className="navbar-brand" style={{ color: "#FFFFFF" }}>
-        My Cars App
+        My Cars
       </div>
 
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup"></div>
