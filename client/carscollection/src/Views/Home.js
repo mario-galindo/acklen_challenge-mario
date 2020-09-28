@@ -86,11 +86,12 @@ function Home() {
   };
 
   useEffect(() => {
+    const urlRequest = "https://carscollectionchallenge.azurewebsites.net/Item";
     const config = {
       headers: { Authorization: `Bearer ${localStorage.getItem("idToken")}` },
     };
 
-    axios.get(url, config).then((response) => {
+    axios.get(urlRequest, config).then((response) => {
       setListCar(response.data);
     });
   }, [listCar]);
