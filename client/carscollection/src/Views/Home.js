@@ -73,11 +73,11 @@ function Home() {
     };
 
     var resourceToUpdate = url + `/${car.id}`;
-    console.log(resourceToUpdate);
     axios
       .put(resourceToUpdate, car, config)
       .then((response) => {
         setShowModalUpdate(false);
+        setNewCar({ name: "", description: "" });
       })
 
       .catch((error) => {
