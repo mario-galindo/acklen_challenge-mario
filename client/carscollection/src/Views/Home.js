@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { UseAxiosGet } from "../Hooks/HttpRequests";
 import axios from "axios";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Table,
   Button,
@@ -13,12 +12,12 @@ import {
   ModalFooter,
 } from "reactstrap";
 
-function Home(props) {
+function Home() {
   const url = `https://carscollectionchallenge.azurewebsites.net/Item`;
 
   const [showModal, setShowModal] = useState(false);
   const [car, setNewCar] = useState({ name: "", description: "" });
-  var listCar = [];
+  const [listCar, setListCar] = useState([]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -63,11 +62,19 @@ function Home(props) {
       });
   };
 
-  listCar = UseAxiosGet(url);
-  console.log(listCar);
+  useEffect(() => {
+    const config = {
+      headers: { Authorization: `Bearer ${localStorage.getItem("idToken")}` },
+    };
+
+    axios.get(url, config).then((response) => {
+      setListCar(response.data);
+    });
+  }, [listCar]);
+
   let content = null;
 
-  if (listCar.data) {
+  if (listCar) {
     content = (
       <Container>
         <br />
@@ -86,7 +93,7 @@ function Home(props) {
             </tr>
           </thead>
           <tbody>
-            {listCar.data.map((elemento, key) => (
+            {listCar.map((elemento, key) => (
               <tr key={key}>
                 <td>{elemento.id}</td>
                 <td>{elemento.name}</td>
