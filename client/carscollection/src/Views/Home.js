@@ -88,6 +88,22 @@ function Home() {
       });
   };
 
+  const getCollection = () => {
+    if (localStorage.getItem("idToken") !== null) {
+      const urlRequest =
+        "https://carscollectionchallenge.azurewebsites.net/Item";
+      const config = {
+        headers: { Authorization: `Bearer ${localStorage.getItem("idToken")}` },
+      };
+
+      axios.get(urlRequest, config).then((response) => {
+        setListCar(response.data);
+      });
+    } else {
+      alert("Please Sign-in!");
+    }
+  };
+
   useEffect(() => {
     const urlRequest = "https://carscollectionchallenge.azurewebsites.net/Item";
     const config = {
@@ -105,8 +121,15 @@ function Home() {
     content = (
       <Container className="text-center">
         <br />
-        <Button color="primary" onClick={showModalSave}>
+        <Button
+          color="primary"
+          style={{ marginRight: "5px" }}
+          onClick={showModalSave}
+        >
           Save new colleccion
+        </Button>
+        <Button color="success" onClick={getCollection}>
+          Get Your Collection
         </Button>
         <br />
         <br />
@@ -173,7 +196,6 @@ function Home() {
         updateCar={updateCar}
       ></ModalUpdate>
 
-     
       {content}
     </div>
   );
