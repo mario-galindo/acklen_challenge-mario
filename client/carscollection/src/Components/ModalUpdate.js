@@ -42,8 +42,8 @@ function ModalUpdate(props) {
       </ModalBody>
 
       <ModalFooter>
-        <Button color="primary" onClick={props.updateCar}>
-          Save
+        <Button color="warning" onClick={props.updateCar}>
+          Update
         </Button>
         <Button className="btn btn-danger" onClick={props.closeModalUpdate}>
           Cancel

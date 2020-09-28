@@ -9,6 +9,7 @@ function Home() {
   const url = `https://carscollectionchallenge.azurewebsites.net/Item`;
 
   const [showModal, setShowModal] = useState(false);
+  const [showModalUpdate, setShowModalUpdate] = useState(false);
   const [car, setNewCar] = useState({ name: "", description: "" });
   const [listCar, setListCar] = useState([]);
 
@@ -21,9 +22,15 @@ function Home() {
     setShowModal(true);
   };
 
+
   const closeModalSave = () => {
     setNewCar({ name: "", description: "" });
     setShowModal(false);
+  };
+
+  const closeModalUpdate = () => {
+    setNewCar({ name: "", description: "" });
+    setShowModalUpdate(false);
   };
 
   const saveNewCar = () => {
@@ -58,7 +65,7 @@ function Home() {
 
   const updateCar = (car) => {
     setNewCar(car);
-    showModalSave();
+    setShowModalUpdate(true)
   };
 
   useEffect(() => {
@@ -137,8 +144,8 @@ function Home() {
       ></ModalCreate>
 
       <ModalUpdate
-        showModalUpdate={showModal}
-        closeModalUpdate={closeModalSave}
+        showModalUpdate={showModalUpdate}
+        closeModalUpdate={closeModalUpdate}
         handleChange={handleChange}
         carName={car.name}
         carDescription={car.description}
