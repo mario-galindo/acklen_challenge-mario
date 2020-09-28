@@ -12,6 +12,7 @@ function Home() {
   const [showModalUpdate, setShowModalUpdate] = useState(false);
   const [car, setNewCar] = useState({ name: "", description: "" });
   const [listCar, setListCar] = useState([]);
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -41,7 +42,7 @@ function Home() {
       .post(url, car, config)
       .then((response) => {
         setShowModal(false);
-        setListCar((listCar) => [...listCar, car]);
+        getCollection();
       })
       .catch((error) => {
         console.log(error);
@@ -81,6 +82,9 @@ function Home() {
       .then((response) => {
         setShowModalUpdate(false);
         setNewCar({ name: "", description: "" });
+        setListCar((listCar) => listCar.filter((item) => item.id !== car.id));
+        setListCar((listCar) => [...listCar, car]);
+
       })
 
       .catch((error) => {
